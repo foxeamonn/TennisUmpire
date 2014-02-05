@@ -1,0 +1,61 @@
+<!doctype html>
+<html manifest="/cache.manifest">
+     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+		
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+		
+		<!-- jquery stuff -->
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+		
+		<!-- my javascript -->
+		<script>
+			// start of jquery load function 
+			$(function() {
+				var r='{"ID":"00000000","membership":"NONE","expires":"000000","liked":"N"}';
+				localStorage.tennisApp=r;
+				var html='Hello, and welcome to the Tennis Umpire web app. In order to use this app, you will need to Like the app.<br> Full instructions on how to do this are given below, as well as help on all the other features of the app. Enjoy!<br>';
+				$('#introContent').html(html);
+				
+			});
+			//end of jquery load function
+
+						
+		</script>
+    </head>
+    
+
+<body>
+		
+	
+	<div data-role="page">
+	
+    <div data-role="header" data-theme="a" data-position="fixed">
+        <h1>Tennis Umpire intro</h1>
+		<a href="playMatch.html" data-icon="arrow-r" data-ajax="false">Continue</a>
+    </div><!-- /header -->
+
+
+		
+	<div data-role="content" id="introContent">
+		
+	</div><!-- end main -->
+	
+
+    <div data-role="footer" data-position="fixed" data-theme="a">
+        
+    </div><!-- /footer --> 	
+
+	<!-- javascript unique to this page needs to be run here -->
+    
+
+	</div> <!--  end of page -->
+     </body>
+</html>

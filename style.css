@@ -1,0 +1,16 @@
+
+#S2P1{text-align: center;font-size: large; margin: 5px; padding: 2px 10px 2px 10px; border:1px solid black;display:inline;}
+#S3P1{text-align: center;font-size: large; margin: 5px; padding: 2px 10px 2px 10px; border: 1px solid black;display:inline;}
+#GAMESP1{text-align: center;font-size: large; margin:5px; padding: 2px 10px 2px 10px;border: 1px solid black;display:inline;}
+#PP1{text-align: center;font-size: large; margin:5px; padding: 2px 10px 2px 10px;border: 1px solid black; display:inline;}
+
+#S2P2{text-align: center;font-size: large; margin: 5px; padding: 2px 10px 2px 10px; border: 1px solid black;display:inline;}
+#S3P2{text-align: center;font-size: large; margin: 5px; padding: 2px 10px 2px 10px; border: 1px solid black;display:inline;}
+#GAMESP2{text-align: center;font-size: large; margin:5px; padding: 2px 10px 2px 10px; border: 1px solid black;display:inline;}
+#PP2{text-align: center;font-size: large; margin: 5px; padding: 2px 10px 2px 10px; border: 1px solid black; display:inline;}
+
+#serverOne{display:inline;}
+#serverTwo{display:inline;}
+
+#notLoggedIn{}
+#activateButton{}

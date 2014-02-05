@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+	<title>tennis umpire</title>
+	<link rel="shortcut icon" href="#">
+	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>	
+</head>
+
+<body>
+	<div id="fb-root"></div>
+	<div class="page-wrap">
+		<div class="top-menu"></div>
+		<div class="clear"></div>
+		<div class="main-content">
+			<div class="bar">
+				<header>
+					<h1 class="header"><a href="#">Tennis Umpire</a>
+					</h1>
+					<nav>
+						<ul>
+							<li id="homeKey"><a href="index.html">Home</a></li> 	
+							<li><a href="deskhelp.html">Help</a></li>
+							<li><a href="mailto:info@foxenet.com" target="_top">Contact us</a></li> 
+							<li><a href="#">MEMBERSHIP</a></li>
+                            <li><a href="playMatch.html">MATCH</a></li>    
+						</ul>	
+						
+					</nav><p>
+					
+				</header>
+			</div>	
+			<div class="clear">
+				   
+			</div>
+				<div class="backgrnd-image">
+					<p class="footer-link" id="customer">Welcome, guest</p>
+					<div id="bodyContents">
+						<!-- Put your page code here -->
+					<div id="accordion">
+  						<h3>Membership</h3>
+   						<div>
+    					 	<p id="memberData">
+								<br>You must be logged into Facebook to check your membership.<br>
+								<div class="fb-login-button" data-max-rows="1" data-show-faces="true"></div><br><br>
+							</p>
+    						 
+   						</div>	
+					</div>
+				</div>
+	     <div class="clear">
+	
+    </div>
+  </div><!-- eo .body-content --></div><!-- eo .page-wrap-->
+   
+	<p class="footer-link">Copyright &copy; Foxenet 2014 |</p>
+	
+	<!-- jquery stuff -->
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		
+		
+	<!-- my javascript -->
+	<script src="js/main.js"></script>
+	<script src="js/member.js"></script>
+	<script src="js/fb.js"></script>
+	<script src="../js/utils.js"></script>
+	
+	<script>
+		var user=sessionStorage.uid;
+		if(user){
+			checkUser();
+			var data=JSON.parse(localStorage.tennisApp);
+			
+			var html='You currently have '+data.membership+' membership, which expires on '+data.expires;
+			if(data.membership!="GOLD"){
+				html+='<br><button id=\'updMember\'  onclick=\'upgradeMe(2);\'>UPGRADE TO GOLD MEMBERSHIP</button>';
+			}
+			if(data.membership=='NONE'){
+				 html='You do not have any membership. Please like the home page to get standard membership for free.';
+			}
+			
+			$('#memberData').html(html);
+			
+		}
+	</script>
+	
+</body>
+</html>

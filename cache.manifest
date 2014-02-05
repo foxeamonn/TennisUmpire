@@ -1,0 +1,29 @@
+CACHE MANIFEST
+# version 0.1
+CACHE:
+index.html
+http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css
+http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css
+http://code.jquery.com/mobile/1.3.2/images/ajax-loader.gif
+http://code.jquery.com/mobile/1.3.2/images/icons-18-white.png
+style.css
+http://code.jquery.com/jquery-1.9.1.min.js
+http://code.jquery.com/ui/1.10.3/jquery-ui.js
+http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js
+js/member.js
+js/tennisUmpire.js
+js/fb.js
+../js/utils.js
+../js/warnings.js
+../js/arrayUtils.js
+
+playMatch.html
+membership.html
+editPlayers.html
+editTitle.html
+editScore.html
+fb.html
+help.html
+
+NETWORK:
+*

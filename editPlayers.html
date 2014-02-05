@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+    </head>
+
+<body>
+		
+	
+	<div data-role="page">
+	
+    <div data-role="header" data-theme="a" data-position="fixed" id="header">
+        <h1>Edit players</h1>
+		<a href="playMatch.html" data-icon="arrow-l" data-ajax="true">Back</a>
+		<a href="playMatch.html" onclick="return updPlayers();" data-icon="check" data-iconpos="right">Save</a>
+    </div><!-- /header -->
+
+
+		
+	<div data-role="content">
+		
+		<input type="text" name="playerOneName" id="playerOneName" data-clear-btn="true" />		
+		<input type="text" name="playerTwoName" id="playerTwoName" data-clear-btn="true" />
+		<button data-theme="e" onclick="swapPlayers();" data-icon="refresh" id="swapRound">Swap names</button>
+		
+		<br>
+		Note: Player in the top box will start serving first
+		
+	</div><!-- end main -->
+		<div data-role="popup" id="popupWarning" data-rel="popup" data-position-to="window"  class="ui-content" data-theme="e"></div>
+		<!-- warning popup -->
+
+	
+
+    <div data-role="footer" data-position="fixed" data-theme="a">
+        <h4>Copyright Foxenet</h4>
+    </div><!-- /footer --> 	
+
+	<!-- javascript unique to this page needs to be run here -->
+    <script>
+		if(match.playerOneName==='Player One'){
+			document.getElementById('playerOneName').placeholder='Server';
+			$('#swapRound').addClass('ui-disabled');
+		}
+		else{
+			document.getElementById('playerOneName').value=match.playerOneName;
+			//$('#swap').removeClass('ui-disabled');
+		}
+		
+		if(match.playerTwoName==='Player Two'){
+			 document.getElementById('playerTwoName').placeholder='Receiver';
+		}
+		else{
+			document.getElementById('playerTwoName').value=match.playerTwoName;
+		}
+		
+	</script>
+	</div> <!--  end of page -->
+     </body>
+</html>

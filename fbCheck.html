@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+				
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+		<link rel="stylesheet" href="style.css" />
+		
+		<!-- jquery stuff -->
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+
+		<script src="../js/utils.js"></script>
+				
+		
+		
+    </head>
+    
+
+<body>
+		
+	<div id="fb-root"></div>
+	<div data-role="page">
+	
+    <div data-role="header" data-theme="a" data-position="fixed" id="header">
+        <h1>Tennis Umpire</h1>
+    </div><!-- /header -->
+
+
+		
+	<div data-role="content">
+		
+	</div><!-- end main -->
+	
+
+    <div data-role="footer" data-position="fixed" data-theme="a">
+        <div data-role="navbar">
+    		<ul>
+     	 		<li id="fblogin"><a href="#"  onclick="login();" id="loginButton">Login</a></li>
+      	 		<li><a href="playMatch.html">Cancel</a></li>
+   			</ul>
+		</div><!-- /navbar -->	
+    </div><!-- /footer --> 	
+
+	<!-- javascript unique to this page needs to be run here -->
+	
+    <script>
+	
+	window.fbAsyncInit = function() {
+  		FB.init({
+    	appId      : 759195620761144, // App ID  - change for each app
+    	channelUrl : 'channel.html', // Channel File
+   		status     : false, // check login status
+    	cookie     : true, // enable cookies to allow the server to access the session
+    	xfbml      : true  // parse XFBML
+  	});
+	
+		
+	FB.getLoginStatus(function(response) {
+		faceBookStatus(response);
+  			
+	 });
+	
+	/*	
+	FB.Event.subscribe('auth.authResponseChange', function(response) {
+  			faceBookStatus(response);
+	});
+	*/
+	
+  };// end of load function //////////////////////////////////////////////////
+
+  // Load the FBSDK asynchronously
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+	function login()
+	{
+		FB.login(function(response) {
+   				faceBookStatus(response);
+ 				},
+				 {scope: 'publish_actions'}	
+			);
+	}
+		
+	// end of Facebook calls  ////////////////////////////////////////
+	
+	function faceBookStatus(response)
+	{
+		if (response.status === 'connected') {
+			$('#loginButton').addClass('ui-disabled');
+		}
+		else
+		{
+			$('#loginButton').addClass("ui-btn-active");
+		}
+	}
+	</script>
+
+	</div> <!--  end of page -->
+     </body>
+</html>

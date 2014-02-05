@@ -1,0 +1,181 @@
+<!doctype html>
+<html manifest="/cache.manifest">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+		<link rel="stylesheet" href="style.css" />
+		
+    </head>
+    
+
+<body>
+		
+	
+	<div data-role="page">
+	
+    <div data-role="header" data-theme="a" data-position="fixed" id="header">
+        <h1>Edit score</h1>
+		<a href="playMatch.html" data-icon="arrow-l" onclick="clearPoint();">Back</a>
+		<a href="playMatch.html" onclick="saveScore();" data-icon="check" data-iconpos="right" id="saveScore">Save</a>
+    </div><!-- /header -->
+
+		
+	<div data-role="content">
+	<table width="100%" border=1>
+	<tr><th width="70%">Players</th><th width="15%">Set 1</th><th width="15%">Set 2</th></tr>
+	<tr><td id="p1"></td>
+		<td>
+		<select id="sel1Set1">
+			<option>0</option>
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+			<option>4</option>
+			<option>5</option>
+			<option>6</option>
+			<option>7</option>
+			
+		</select>
+		</td>
+		<td>
+		<select id="sel1Set2">
+			<option>0</option>
+		</select>
+		</td>
+	</tr>
+	
+	<tr><td id="p2"></td>
+		<td>
+		<select id="sel2Set1" onchange="updSet()">
+			<option>-</option>
+			<option>0</option>
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+			<option>4</option>
+			<option>5</option>
+			<option>6</option>
+			<option>7</option>
+		</select>
+		</td>
+		<td>
+		<select id="sel2Set2">
+			<option>0</option>
+			
+		</select>
+		</td>
+	</tr>
+
+	
+	</table>	
+		
+				
+	</div><!-- end main -->
+	
+	<div data-role="popup" id="popupWarning" data-rel="popup" data-position-to="window"  class="ui-content" data-theme="e"></div>
+		<!-- warning popup -->
+
+
+    <div data-role="footer" data-position="fixed" data-theme="a">
+        <h4>Copyright Foxenet</h4>
+    </div><!-- /footer --> 	
+
+	<!-- javascript unique to this page needs to be run here -->
+    <script>
+		$('#saveScore').addClass('ui-disabled');
+		$('#p1').text(match.playerOneName);
+		$('#p2').text(match.playerTwoName);
+
+		function updSet()
+		{
+			var sel=document.getElementById("sel1Set1");
+			var p1g1=sel[sel.selectedIndex].text;
+			sel=document.getElementById("sel2Set1");
+			var p2g1=sel[sel.selectedIndex].text;
+			$('#saveScore').removeClass('ui-disabled');
+			
+			var p1=parseInt(p1g1);
+			var p2=parseInt(p2g1);
+			var setDone=false;
+			point.gamesP1=p1;
+			point.gamesP2=p2;
+			
+			// check is set over
+			if(p1<5&&p2<5) return;	
+			if(p2==6&&p1==6){point.pointType='tieBreak';return;}
+			if(p1==7){setDone=true;p2=6;wonPoint=1;}
+			if(p2==7){setDone=true;p1=6;wonPoint=2;}
+			if(p1>5){setDone=true;wonPoint=1;}
+			if(p2>5){setDone=true;wonPoint=2;}
+
+		
+			if(setDone==true)	// if set 1 is over, allow change values in set 2
+			{
+				setOver();
+				var sel2=document.getElementById('sel1Set2');
+				for(i=1;i<6;i++){
+					var opt=new Option();
+					opt.text=i;
+					opt.value="";
+					sel2[i]=opt;
+				}
+				sel2=document.getElementById('sel2Set2');
+				for(i=1;i<6;i++){
+					opt=new Option();
+					opt.text=i;
+					opt.value="";
+					sel2[i]=opt;
+				}
+				// check to see who has won set
+				//point.s1=1;point.s2=0;
+				//if(p2>p1){point.s1=0;point.s2=1;}
+			}
+		}
+		
+		function saveScore()
+		{
+			if(point.setNumber===2){
+				var sel=document.getElementById('sel1Set2');
+				var p1g1=sel[sel.selectedIndex].text;
+				sel=document.getElementById('sel2Set2');
+				var p2g1=sel[sel.selectedIndex].text;
+				point.gamesP1=parseInt(p1g1);
+				point.gamesP2=parseInt(p2g1);
+			}
+			clearArray(points);
+			points.push(JSON.stringify(point));
+			current=0;
+			showScore(point);
+			return;
+		}
+		
+		function clearPoint()
+		{
+			point.server=1;
+			point.set3P1=0;
+			point.set3P2=0;
+			point.set2P1=0;
+			point.set2P2=0;
+			point.setsP1=0;
+			point.setsP2=0;
+			point.s1=0;
+			point.s2=0;
+			point.gamesP1=0;
+			point.gamesP2=0;
+			point.pointsP1=0;
+			point.pointsP2=0;
+			point.pointType='Normal';
+			point.setNumber=1;
+			showScore(point);
+		}
+		
+	</script>
+
+	</div> <!--  end of page -->
+	     </body>
+</html>

@@ -1,0 +1,113 @@
+
+<!doctype html>
+<html manifest="/cache.manifest">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+		
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+		<link rel="stylesheet" href="css/match.css" />
+		
+		<!-- jquery stuff -->
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+		
+		<!-- my javascript -->
+		<script src="js/member.js"></script>
+		<script src="js/tennisUmpire.js"></script>
+		<script src="js/fb.js"></script>
+		<script src="../js/utils.js"></script>
+		<script src="../js/warnings.js"></script>
+		<script src="../js/arrayUtils.js"></script>
+		
+		 <script>
+			$(document).on('pageinit','#activate', function(event) {
+				if(sessionStorage.uid)
+				{
+					$('#notLoggedIn').hide();
+					$('#activateButton').show();
+				}
+				else
+				{
+					$('#notLoggedIn').show();
+					$('#activateButton').hide();
+				}
+			});
+		</script>		
+    </head>
+<body>
+	<div id="fb-root"></div>
+	<div data-role="page" id="playMatch">
+		<div data-role="panel" id="mypanel" data-display="overlay" data-theme="c">
+    		<ul data-role="listview" data-theme="d">
+        	<li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
+			<li data-icon="arrow-r"><a href="help.html" data-rel="none">Help</a></li>
+			<li data-role="list-divider">Match</li>
+			<li data-icon="arrow-r"><a href="editTitle.html" data-rel="none" id="editTitle">Edit description</a></li>
+        	<li data-icon="arrow-r"><a href="editPlayers.html" data-rel="none" id="editPlayers">Edit players</a></li>
+			<li data-icon="arrow-r"><a href="editScore.html" data-rel="none" id="editScore">Edit score</a></li>
+			 </ul>
+
+		</div><!-- /panel -->
+	
+    	<div data-role="header" data-theme="a" data-position="fixed" id="header">
+    	    <h1>Tennis Umpire</h1>
+			<a href="#mypanel" data-icon="grid" data-iconpos="left">Menu</a>
+   		 </div><!-- /header -->
+
+		
+		<div data-role="content">
+		
+			<ul data-role="listview" data-inset="true" id="scoreBoard">
+    			<li data-role="list-divider" id="mainHdr"></li>
+   				<li data-icon="plus">
+					<a href="Javascript:putPoint(1);">
+       		 		<h2 id="buttonOne">Player One</h2>
+					<div id="S3P1"></div>
+					<div id="S2P1"></div>
+					<div id="GAMESP1"></div>
+					<div id="PP1"></div>
+					<div id="serverOne">*</div>
+	    			</a>
+					
+				</li>
+					
+    			<li data-icon="plus">
+					<a href="Javascript:putPoint(2);">
+					<div id="S3P2"></div>
+					<div id="S2P2"></div>
+					<div id="GAMESP2"></div>
+					<div id="PP2"></div>
+					<div id="serverTwo">*</div>
+        			<h2 id="buttonTwo">Player two</h2>
+        			<br>
+    				</a>
+				</li>
+   		 	</ul>
+			<div data-role="popup" id="popupWarning" data-rel="popup" data-position-to="window"  class="ui-content" data-theme="e"></div>
+		</div><!-- end main -->
+	
+
+    	<div data-role="footer" data-position="fixed" data-theme="a">
+			<div data-role="navbar">
+    			<ul>
+     	 			<li><a href="Javascript:startMatch();" data-icon="check" data-iconpos="left" class="ui-btn-active" id="start">Start</a></li>
+					<li><a href="#" data-icon="plus" data-iconpos="right" id="post" onclick="postScore();">Post score</a></li>
+      	 			<li><a href="Javascript:undo();" data-icon="back" data-iconpos="right" id="undoPoint">Undo</a></li>
+					<li><a href="Javascript:stopMatch();" data-icon="delete" data-iconpos="right" id="stop">Reset</a></li>
+   				</ul>
+			</div><!-- /navbar -->	
+			
+    	</div><!-- /footer --> 
+		
+		
+	</div> <!--  end of page -->
+			
+     </body>
+</html>

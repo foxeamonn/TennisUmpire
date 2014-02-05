@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+		
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+		<link rel="stylesheet" href="style.css" />
+		
+		<!-- jquery stuff -->
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+		
+		<!-- my javascript -->
+		<script src="js/tennisUmpire.js"></script>
+		<script src="../js/utils.js"></script>
+		<script src="../js/warnings.js"></script>
+		<script src="../js/arrayUtils.js"></script>
+		
+    </head>
+    
+
+<body>
+		
+	
+	<div data-role="page">
+	
+    <div data-role="header" data-theme="a" data-position="fixed" id="header">
+        <h1 id="hdr">Tennis Umpire</h1>
+    </div><!-- /header -->
+
+
+		
+	<div data-role="content">
+	<p>
+		Hello, and welcome to the <i>Demo</i> version of Tennis Umpire. The demo version allows you to keep the score in a match, but does not
+		allow you to change match details. The full version allows you to change the match description, player names, and post live scores to your Facebook wall!. 
+		
+	</div><!-- end main -->
+	
+
+    <div data-role="footer" data-position="fixed" data-theme="a">
+        <div data-role="navbar">
+    		<ul>
+     	 		<li><a href="playMatch.html" data-ajax="false" id="newMatch">New match</a></li>
+      	 		<li><a href="upgrade.html">Upgrade</a></li>
+   			</ul>
+		</div><!-- /navbar -->	
+    </div><!-- /footer --> 	
+
+	<!-- javascript unique to this page needs to be run here -->
+    <script>
+		sessionStorage.version="demo";
+		$('#newMatch').addClass("ui-btn-active");
+	</script>
+
+	</div> <!--  end of page -->
+     </body>
+</html>
